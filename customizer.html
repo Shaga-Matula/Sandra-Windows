@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Window Customizer - Choose your house and customize windows">
+    <title>Window Customizer - Sandra Windows</title>
+    <link rel="stylesheet" href="customizer.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Sandra Windows</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="customizer.html">Customizer</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Window Customizer</h1>
+        <p class="subtitle">Choose your house type and customize your windows</p>
+
+        <div class="customizer-grid">
+            <!-- Left Panel: Controls -->
+            <div class="controls-panel">
+                <div class="control-section">
+                    <h3>Select House Type</h3>
+                    <div class="house-types">
+                        <button class="house-btn active" data-house="modern">
+                            <span class="house-icon">🏢</span>
+                            <span>Modern</span>
+                        </button>
+                        <button class="house-btn" data-house="traditional">
+                            <span class="house-icon">🏠</span>
+                            <span>Traditional</span>
+                        </button>
+                        <button class="house-btn" data-house="cottage">
+                            <span class="house-icon">🏡</span>
+                            <span>Cottage</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Window Color</h3>
+                    <div class="color-options">
+                        <button class="color-btn active" data-color="#FFFFFF" style="background: #FFFFFF;">White</button>
+                        <button class="color-btn" data-color="#8B4513" style="background: #8B4513;">Brown</button>
+                        <button class="color-btn" data-color="#2C3E50" style="background: #2C3E50;">Dark Gray</button>
+                        <button class="color-btn" data-color="#000000" style="background: #000000;">Black</button>
+                        <button class="color-btn" data-color="#D4AF37" style="background: #D4AF37;">Gold</button>
+                        <button class="color-btn" data-color="#C0C0C0" style="background: #C0C0C0;">Silver</button>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Window Type</h3>
+                    <div class="window-types">
+                        <button class="type-btn active" data-type="standard">Standard</button>
+                        <button class="type-btn" data-type="bay">Bay Window</button>
+                        <button class="type-btn" data-type="sliding">Sliding</button>
+                        <button class="type-btn" data-type="casement">Casement</button>
+                        <button class="type-btn" data-type="awning">Awning</button>
+                        <button class="type-btn" data-type="picture">Picture</button>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Summary</h3>
+                    <div class="summary">
+                        <p><strong>House:</strong> <span id="selected-house">Modern</span></p>
+                        <p><strong>Color:</strong> <span id="selected-color">White</span></p>
+                        <p><strong>Type:</strong> <span id="selected-type">Standard</span></p>
+                    </div>
+                    <button class="save-btn">Save Configuration</button>
+                </div>
+            </div>
+
+            <!-- Right Panel: Preview -->
+            <div class="preview-panel">
+                <h3>Preview</h3>
+                <div class="house-preview" id="house-preview">
+                    <!-- House will be rendered here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="customizer.js"></script>
+</body>
+</html>
