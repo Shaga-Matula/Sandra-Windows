@@ -65,91 +65,69 @@ function updateSummary() {
 function renderHouse() {
     const preview = document.getElementById('house-preview');
     
-    let windowHTML = '';
+    // Window positions for mansion overlay (adjust these based on your image)
+    const windowPositions = {
+        'modern': [
+            { top: '25%', left: '15%', width: '12%', height: '15%' },
+            { top: '25%', left: '35%', width: '12%', height: '15%' },
+            { top: '25%', left: '55%', width: '12%', height: '15%' },
+            { top: '25%', left: '75%', width: '12%', height: '15%' },
+            { top: '55%', left: '25%', width: '12%', height: '15%' },
+            { top: '55%', left: '45%', width: '12%', height: '15%' },
+            { top: '55%', left: '65%', width: '12%', height: '15%' }
+        ],
+        'traditional': [
+            { top: '30%', left: '20%', width: '15%', height: '18%' },
+            { top: '30%', left: '42%', width: '15%', height: '18%' },
+            { top: '30%', left: '64%', width: '15%', height: '18%' },
+            { top: '60%', left: '31%', width: '15%', height: '18%' },
+            { top: '60%', left: '53%', width: '15%', height: '18%' }
+        ],
+        'cottage': [
+            { top: '35%', left: '25%', width: '18%', height: '20%' },
+            { top: '35%', left: '57%', width: '18%', height: '20%' },
+            { top: '65%', left: '41%', width: '18%', height: '20%' }
+        ]
+    };
     
-    // Different window types
+    let windowHTML = '';
+    const positions = windowPositions[currentConfig.house];
+    
+    // Create overlay windows based on house type
+    positions.forEach((pos, index) => {
+        const opacity = currentConfig.color === '#FFFFFF' ? '0.6' : '0.7';
+        windowHTML += `
+            <div class="window-overlay" style="
+                position: absolute;
+                top: ${pos.top};
+                left: ${pos.left};
+                width: ${pos.width};
+                height: ${pos.height};
+                background: ${currentConfig.color};
+                opacity: ${opacity};
+                border: 2px solid ${currentConfig.color === '#FFFFFF' ? '#333' : currentConfig.color};
+                box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+                transition: all 0.3s;
+            ">
+            </div>
+        `;
+    });
+    
+    // Different window types - just for reference, overlays are simpler
     switch(currentConfig.type) {
         case 'standard':
-            windowHTML = `
-                <div class="window window-left" style="background: ${currentConfig.color}; border-color: ${currentConfig.color === '#FFFFFF' ? '#333' : currentConfig.color};">
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 3px; background: #333;"></div>
-                    <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: #333;"></div>
-                </div>
-                <div class="window window-right" style="background: ${currentConfig.color}; border-color: ${currentConfig.color === '#FFFFFF' ? '#333' : currentConfig.color};">
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 3px; background: #333;"></div>
-                    <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: #333;"></div>
-                </div>
-            `;
+            // Standard grid pattern
             break;
         case 'bay':
-            windowHTML = `
-                <div class="window window-left" style="background: ${currentConfig.color}; border-color: ${currentConfig.color === '#FFFFFF' ? '#333' : currentConfig.color}; width: 100px; transform: perspective(100px) rotateY(-10deg);">
-                    <div style="position: absolute; top: 33%; left: 0; right: 0; height: 2px; background: #333;"></div>
-                    <div style="position: absolute; top: 66%; left: 0; right: 0; height: 2px; background: #333;"></div>
-                </div>
-                <div class="window window-right" style="background: ${currentConfig.color}; border-color: ${currentConfig.color === '#FFFFFF' ? '#333' : currentConfig.color}; width: 100px; transform: perspective(100px) rotateY(10deg);">
-                    <div style="position: absolute; top: 33%; left: 0; right: 0; height: 2px; background: #333;"></div>
-                    <div style="position: absolute; top: 66%; left: 0; right: 0; height: 2px; background: #333;"></div>
-                </div>
-            `;
-            break;
         case 'sliding':
-            windowHTML = `
-                <div class="window window-left" style="background: ${currentConfig.color}; border-color: ${currentConfig.color === '#FFFFFF' ? '#333' : currentConfig.color}; width: 90px;">
-                    <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: #333; box-shadow: 2px 0 4px rgba(0,0,0,0.3);"></div>
-                </div>
-                <div class="window window-right" style="background: ${currentConfig.color}; border-color: ${currentConfig.color === '#FFFFFF' ? '#333' : currentConfig.color}; width: 90px;">
-                    <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: #333; box-shadow: 2px 0 4px rgba(0,0,0,0.3);"></div>
-                </div>
-            `;
-            break;
         case 'casement':
-            windowHTML = `
-                <div class="window window-left" style="background: ${currentConfig.color}; border-color: ${currentConfig.color === '#FFFFFF' ? '#333' : currentConfig.color};">
-                    <div style="position: absolute; left: 5px; top: 50%; width: 15px; height: 3px; background: #333; transform: translateY(-50%);"></div>
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 3px; background: #333;"></div>
-                    <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: #333;"></div>
-                </div>
-                <div class="window window-right" style="background: ${currentConfig.color}; border-color: ${currentConfig.color === '#FFFFFF' ? '#333' : currentConfig.color};">
-                    <div style="position: absolute; right: 5px; top: 50%; width: 15px; height: 3px; background: #333; transform: translateY(-50%);"></div>
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 3px; background: #333;"></div>
-                    <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: #333;"></div>
-                </div>
-            `;
-            break;
         case 'awning':
-            windowHTML = `
-                <div class="window window-left" style="background: ${currentConfig.color}; border-color: ${currentConfig.color === '#FFFFFF' ? '#333' : currentConfig.color}; height: 80px;">
-                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 20px; background: linear-gradient(to bottom, rgba(0,0,0,0.2), transparent);"></div>
-                    <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: #333;"></div>
-                </div>
-                <div class="window window-right" style="background: ${currentConfig.color}; border-color: ${currentConfig.color === '#FFFFFF' ? '#333' : currentConfig.color}; height: 80px;">
-                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 20px; background: linear-gradient(to bottom, rgba(0,0,0,0.2), transparent);"></div>
-                    <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: #333;"></div>
-                </div>
-            `;
-            break;
         case 'picture':
-            windowHTML = `
-                <div class="window window-left" style="background: ${currentConfig.color}; border-color: ${currentConfig.color === '#FFFFFF' ? '#333' : currentConfig.color}; width: 100px; height: 120px; border-width: 5px;">
-                </div>
-                <div class="window window-right" style="background: ${currentConfig.color}; border-color: ${currentConfig.color === '#FFFFFF' ? '#333' : currentConfig.color}; width: 100px; height: 120px; border-width: 5px;">
-                </div>
-            `;
+            // All types use the same overlay system
             break;
     }
     
-    preview.innerHTML = `
-        <div class="house ${currentConfig.house}">
-            <div class="roof"></div>
-            <div class="house-body">
-                ${windowHTML}
-                <div class="door">
-                    <div class="door-knob"></div>
-                </div>
-            </div>
-        </div>
-    `;
+    preview.innerHTML = windowHTML;
 }
 
 function saveConfiguration() {

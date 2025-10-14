@@ -246,101 +246,15 @@ h1 {
     overflow: hidden;
 }
 
-/* House Styles */
-.house {
-    position: relative;
-    width: 400px;
-    height: 400px;
+/* Window Overlay Styles */
+.window-overlay {
+    cursor: pointer;
+    backdrop-filter: blur(1px);
 }
 
-.house-body {
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px;
-    height: 250px;
-    background: #E8D5B7;
-    border: 3px solid #333;
-}
-
-.roof {
-    position: absolute;
-    bottom: 300px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 170px solid transparent;
-    border-right: 170px solid transparent;
-    border-bottom: 120px solid #8B4513;
-    border-top: 3px solid #333;
-}
-
-.window {
-    position: absolute;
-    background: #87CEEB;
-    border: 3px solid #333;
-    transition: all 0.3s;
-}
-
-.window-left {
-    top: 60px;
-    left: 40px;
-    width: 80px;
-    height: 100px;
-}
-
-.window-right {
-    top: 60px;
-    right: 40px;
-    width: 80px;
-    height: 100px;
-}
-
-.door {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70px;
-    height: 120px;
-    background: #654321;
-    border: 3px solid #333;
-}
-
-.door-knob {
-    position: absolute;
-    right: 10px;
-    top: 60px;
-    width: 8px;
-    height: 8px;
-    background: #FFD700;
-    border-radius: 50%;
-}
-
-/* Traditional House */
-.house.traditional .house-body {
-    background: #D2691E;
-}
-
-.house.traditional .roof {
-    border-bottom-color: #8B0000;
-}
-
-/* Cottage House */
-.house.cottage .house-body {
-    background: #F5DEB3;
-    border-radius: 10px 10px 0 0;
-}
-
-.house.cottage .roof {
-    border-bottom-color: #A0522D;
-    border-radius: 50% 50% 0 0;
-}
-
-.house.cottage .window {
-    border-radius: 8px 8px 0 0;
+.window-overlay:hover {
+    opacity: 0.9 !important;
+    transform: scale(1.02);
 }
 
 @media (max-width: 1024px) {
