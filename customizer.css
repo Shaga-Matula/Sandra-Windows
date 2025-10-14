@@ -236,7 +236,7 @@ h1 {
 }
 
 .house-preview {
-    background: linear-gradient(to bottom, #87CEEB 0%, #87CEEB 60%, #90EE90 60%, #90EE90 100%);
+    background: url('images/backround/mansion_house_background.jpg') center center / cover no-repeat;
     min-height: 600px;
     border-radius: 8px;
     display: flex;
