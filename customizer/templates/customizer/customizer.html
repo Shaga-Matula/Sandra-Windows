@@ -1,0 +1,83 @@
+{% extends 'customizer/base.html' %}
+{% load static %}
+
+{% block title %}Window Customizer - Sandra Windows{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Window Customizer</h1>
+    <p class="subtitle">Choose your house type and customize your windows</p>
+
+    <div class="customizer-grid">
+        <!-- Left Panel: Controls -->
+        <div class="controls-panel">
+            <form method="get" action="{% url 'customizer' %}">
+                <div class="control-section">
+                    <h3>Select House Type</h3>
+                    <div class="house-types">
+                        {% for value, label in house_choices %}
+                        <a href="?house={{ value }}&color={{ window_color }}&type={{ window_type }}" 
+                           class="house-btn {% if house_type == value %}active{% endif %}">
+                            <span class="house-icon">
+                                {% if value == 'modern' %}🏢{% elif value == 'traditional' %}🏠{% else %}🏡{% endif %}
+                            </span>
+                            <span>{{ label }}</span>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Window Color</h3>
+                    <div class="color-options">
+                        {% for value, label in color_choices %}
+                        <a href="?house={{ house_type }}&color={{ value }}&type={{ window_type }}" 
+                           class="color-btn {% if window_color == value %}active{% endif %}" 
+                           style="background: {{ value }}; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                            {{ label }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Window Type</h3>
+                    <div class="window-types">
+                        {% for value, label in type_choices %}
+                        <a href="?house={{ house_type }}&color={{ window_color }}&type={{ value }}" 
+                           class="type-btn {% if window_type == value %}active{% endif %}">
+                            {{ label }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Summary</h3>
+                    <div class="summary">
+                        <p><strong>House:</strong> {{ house_type|title }}</p>
+                        <p><strong>Color:</strong> {{ color_name }}</p>
+                        <p><strong>Type:</strong> {{ window_type|title }}</p>
+                    </div>
+                </div>
+            </form>
+            
+            <form method="post" action="{% url 'customizer' %}">
+                {% csrf_token %}
+                <input type="hidden" name="house_type" value="{{ house_type }}">
+                <input type="hidden" name="window_color" value="{{ window_color }}">
+                <input type="hidden" name="window_type" value="{{ window_type }}">
+                <button type="submit" class="save-btn">Save Configuration</button>
+            </form>
+        </div>
+
+        <!-- Right Panel: Preview -->
+        <div class="preview-panel">
+            <h3>Preview</h3>
+            <div class="house-preview">
+                {% include 'customizer/preview.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

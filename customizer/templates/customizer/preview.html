@@ -1,0 +1,21 @@
+{% load static %}
+<!-- Window overlays based on house type -->
+{% if house_type == 'modern' %}
+    <div class="window-overlay" style="position: absolute; top: 25%; left: 15%; width: 12%; height: 15%; background: {{ window_color }}; opacity: 0.7; border: 2px solid {{ window_color }}; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);"></div>
+    <div class="window-overlay" style="position: absolute; top: 25%; left: 35%; width: 12%; height: 15%; background: {{ window_color }}; opacity: 0.7; border: 2px solid {{ window_color }}; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);"></div>
+    <div class="window-overlay" style="position: absolute; top: 25%; left: 55%; width: 12%; height: 15%; background: {{ window_color }}; opacity: 0.7; border: 2px solid {{ window_color }}; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);"></div>
+    <div class="window-overlay" style="position: absolute; top: 25%; left: 75%; width: 12%; height: 15%; background: {{ window_color }}; opacity: 0.7; border: 2px solid {{ window_color }}; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);"></div>
+    <div class="window-overlay" style="position: absolute; top: 55%; left: 25%; width: 12%; height: 15%; background: {{ window_color }}; opacity: 0.7; border: 2px solid {{ window_color }}; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);"></div>
+    <div class="window-overlay" style="position: absolute; top: 55%; left: 45%; width: 12%; height: 15%; background: {{ window_color }}; opacity: 0.7; border: 2px solid {{ window_color }}; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);"></div>
+    <div class="window-overlay" style="position: absolute; top: 55%; left: 65%; width: 12%; height: 15%; background: {{ window_color }}; opacity: 0.7; border: 2px solid {{ window_color }}; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);"></div>
+{% elif house_type == 'traditional' %}
+    <div class="window-overlay" style="position: absolute; top: 30%; left: 20%; width: 15%; height: 18%; background: {{ window_color }}; opacity: 0.7; border: 2px solid {{ window_color }}; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);"></div>
+    <div class="window-overlay" style="position: absolute; top: 30%; left: 42%; width: 15%; height: 18%; background: {{ window_color }}; opacity: 0.7; border: 2px solid {{ window_color }}; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);"></div>
+    <div class="window-overlay" style="position: absolute; top: 30%; left: 64%; width: 15%; height: 18%; background: {{ window_color }}; opacity: 0.7; border: 2px solid {{ window_color }}; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);"></div>
+    <div class="window-overlay" style="position: absolute; top: 60%; left: 31%; width: 15%; height: 18%; background: {{ window_color }}; opacity: 0.7; border: 2px solid {{ window_color }}; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);"></div>
+    <div class="window-overlay" style="position: absolute; top: 60%; left: 53%; width: 15%; height: 18%; background: {{ window_color }}; opacity: 0.7; border: 2px solid {{ window_color }}; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);"></div>
+{% else %}
+    <div class="window-overlay" style="position: absolute; top: 35%; left: 25%; width: 18%; height: 20%; background: {{ window_color }}; opacity: 0.7; border: 2px solid {{ window_color }}; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);"></div>
+    <div class="window-overlay" style="position: absolute; top: 35%; left: 57%; width: 18%; height: 20%; background: {{ window_color }}; opacity: 0.7; border: 2px solid {{ window_color }}; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);"></div>
+    <div class="window-overlay" style="position: absolute; top: 65%; left: 41%; width: 18%; height: 20%; background: {{ window_color }}; opacity: 0.7; border: 2px solid {{ window_color }}; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);"></div>
+{% endif %}

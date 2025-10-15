@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sandra Windows{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Sandra Windows</div>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'customizer' %}">Customizer</a></li>
+                <li><a href="{% url 'home' %}#about">About</a></li>
+                <li><a href="{% url 'home' %}#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    {% block content %}{% endblock %}
+    
+    <footer id="contact">
+        <p>&copy; 2024 Sandra Windows. All rights reserved.</p>
+        <p>Contact us: info@sandrawindows.com | (555) 123-4567</p>
+    </footer>
+</body>
+</html>
